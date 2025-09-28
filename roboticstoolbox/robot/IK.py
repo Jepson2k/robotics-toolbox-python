@@ -327,7 +327,7 @@ class IKSolver(ABC):
                     # Wrap q to be within +- 180 deg
                     # If your robot has larger than 180 deg range on a joint
                     # this line should be modified in incorporate the extra range
-                    q = (q + np.pi) % (2 * np.pi) - np.pi
+                    # q = (q + np.pi) % (2 * np.pi) - np.pi
 
                     # Check if we have violated joint limits
                     jl_valid = self._check_jl(ets, q)
