@@ -92,10 +92,10 @@ extern "C"
                     // We have arrived
 
                     // wrap q to +- pi
-                    for (int i = 0; i < ets->n; i++)
-                    {
-                        q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
-                    }
+                    // for (int i = 0; i < ets->n; i++)
+                    // {
+                    //    q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
+                    // }
 
                     // Check for joint limit violation
                     if (reject_jl)
@@ -226,10 +226,10 @@ extern "C"
                     // We have arrived
 
                     // wrap q to +- pi
-                    for (int i = 0; i < ets->n; i++)
-                    {
-                        q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
-                    }
+                    // for (int i = 0; i < ets->n; i++)
+                    // {
+                    //     q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
+                    // }
 
                     // Check for joint limit violation
                     if (reject_jl)
@@ -352,10 +352,10 @@ extern "C"
                     // We have arrived
 
                     // wrap q to +- pi
-                    for (int i = 0; i < ets->n; i++)
-                    {
-                        q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
-                    }
+                    // for (int i = 0; i < ets->n; i++)
+                    // {
+                    //     q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
+                    // }
 
                     // Check for joint limit violation
                     if (reject_jl)
@@ -466,10 +466,10 @@ extern "C"
                     // We have arrived
 
                     // wrap q to +- pi
-                    for (int i = 0; i < ets->n; i++)
-                    {
-                        q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
-                    }
+                    // for (int i = 0; i < ets->n; i++)
+                    // {
+                    //     q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
+                    // }
 
                     // Check for joint limit violation
                     if (reject_jl)
@@ -578,10 +578,10 @@ extern "C"
                     // We have arrived
 
                     // wrap q to +- pi
-                    for (int i = 0; i < ets->n; i++)
-                    {
-                        q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
-                    }
+                    // for (int i = 0; i < ets->n; i++)
+                    // {
+                    //     q(i) = std::fmod(q(i) + PI, PI_x2) - PI;
+                    // }
 
                     // Check for joint limit violation
                     if (reject_jl)
