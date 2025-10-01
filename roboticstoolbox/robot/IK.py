@@ -324,10 +324,30 @@ class IKSolver(ABC):
 
                 # Check if we have arrived
                 if E < self.tol:
-                    # Wrap q to be within +- 180 deg
-                    # If your robot has larger than 180 deg range on a joint
-                    # this line should be modified in incorporate the extra range
-                    # q = (q + np.pi) % (2 * np.pi) - np.pi
+                    # Smart wrapping: only wrap if it helps satisfy joint limits
+                    # This is critical for robots with extended joint limits (e.g., >180° or asymmetric ranges)
+                    for i in range(ets.n):
+                        q_orig = q[i]
+                        ql_min = ets.qlim[0, i]
+                        ql_max = ets.qlim[1, i]
+                        
+                        # Check if already within limits
+                        if ql_min <= q_orig <= ql_max:
+                            continue  # Already good, don't wrap
+                        
+                        # Try wrapping options to see if any work
+                        q_wrapped_pos = q_orig + 2 * np.pi  # +2π
+                        q_wrapped_neg = q_orig - 2 * np.pi  # -2π
+                        q_wrapped_std = (q_orig + np.pi) % (2 * np.pi) - np.pi  # [-π,π]
+                        
+                        # Use whichever wrapping brings us within limits
+                        if ql_min <= q_wrapped_pos <= ql_max:
+                            q[i] = q_wrapped_pos
+                        elif ql_min <= q_wrapped_neg <= ql_max:
+                            q[i] = q_wrapped_neg
+                        elif ql_min <= q_wrapped_std <= ql_max:
+                            q[i] = q_wrapped_std
+                        # else: leave as-is, will fail limit check appropriately
 
                     # Check if we have violated joint limits
                     jl_valid = self._check_jl(ets, q)
