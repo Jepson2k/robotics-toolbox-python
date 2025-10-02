@@ -325,7 +325,7 @@ class IKSolver(ABC):
                 # Check if we have arrived
                 if E < self.tol:
                     # Smart wrapping: only wrap if it helps satisfy joint limits
-                    # This is critical for robots with extended joint limits (e.g., >180° or asymmetric ranges)
+                    # This is critical for robots with extended joint limits (e.g., >180 or asymmetric ranges)
                     for i in range(ets.n):
                         q_orig = q[i]
                         ql_min = ets.qlim[0, i]
@@ -336,9 +336,9 @@ class IKSolver(ABC):
                             continue  # Already good, don't wrap
                         
                         # Try wrapping options to see if any work
-                        q_wrapped_pos = q_orig + 2 * np.pi  # +2π
-                        q_wrapped_neg = q_orig - 2 * np.pi  # -2π
-                        q_wrapped_std = (q_orig + np.pi) % (2 * np.pi) - np.pi  # [-π,π]
+                        q_wrapped_pos = q_orig + 2 * np.pi  # +2pi
+                        q_wrapped_neg = q_orig - 2 * np.pi  # -2pi
+                        q_wrapped_std = (q_orig + np.pi) % (2 * np.pi) - np.pi  # [-pi,pi]
                         
                         # Use whichever wrapping brings us within limits
                         if ql_min <= q_wrapped_pos <= ql_max:
