@@ -12,16 +12,11 @@ authors = [
 ]
 
 dependencies = [
-    "numpy==1.26.4",
-    "spatialmath-python>=1.1.5",
+    "numpy>=1.26.4,<3.0",
+    "spatialmath-python>=1.1.11",
     "spatialgeometry>=1.0.0",
-    "pgraph-python",
     "scipy",
-    "matplotlib",
-    "ansitable",
-    "swift-sim>=1.0.0",
     "rtb-data",
-    "progress",
     "typing_extensions",
 ]
 
@@ -67,7 +62,30 @@ repository = "https://github.com/petercorke/robotics-toolbox-python"
 
 [project.optional-dependencies]
 
+# Plotting and visualization
+plot = ["matplotlib"]
+
+# 3D simulation
+sim = ["swift-sim>=1.0.0"]
+
+# Mobile robotics (planners)
+mobile = ["pgraph-python", "matplotlib"]
+
+# Pretty CLI output
+pretty = ["ansitable", "progress"]
+
+# Collision detection
 collision = ["pybullet"]
+
+# All optional features
+full = [
+    "matplotlib",
+    "swift-sim>=1.0.0",
+    "pgraph-python",
+    "ansitable",
+    "progress",
+    "pybullet",
+]
 
 dev = [
     "black",
@@ -101,7 +119,7 @@ rtbtool = "roboticstoolbox.bin.rtbtool:main"
 
 [build-system]
 
-requires = ["setuptools", "numpy==1.26.4"]
+requires = ["setuptools", "numpy>=1.26.4,<3.0"]
 build-backend = "setuptools.build_meta"
 
 
